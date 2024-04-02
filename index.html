@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Number Guessing Puzzle</title>
+</head>
+<body>
+
+<h2>Number Guessing Puzzle</h2>
+<p>Guess a number between 1 and 100:</p>
+
+<input type="number" id="guessInput" min="1" max="100" required>
+<button onclick="checkGuess()">Guess</button>
+
+<p id="resultMessage"></p>
+
+<script>
+// Generate a random number between 1 and 100
+var secretNumber = Math.floor(Math.random() * 100) + 1;
+var guessCount = 0;
+
+function checkGuess() {
+    var guess = parseInt(document.getElementById('guessInput').value, 10);
+    guessCount++;
+
+    if (guess === secretNumber) {
+        document.getElementById('resultMessage').innerHTML = 'Congratulations! You guessed the number in ' + guessCount + ' attempts.';
+    } else if (guess < secretNumber) {
+        document.getElementById('resultMessage').innerHTML = 'Too low! Try again.';
+    } else {
+        document.getElementById('resultMessage').innerHTML = 'Too high! Try again.';
+    }
+}</script>
+</body>
+</html>
